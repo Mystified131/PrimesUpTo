@@ -1,0 +1,28 @@
+﻿
+@model MVCApplication.ViewModels.ResultViewModel
+
+@{
+    ViewData["Title"] = "Result";
+}
+
+<h2>Result</h2>
+
+<br />
+
+@if (@Model.State != false)
+
+{ <p>The prime numbers up to @Model.Numin are:</p>
+    @foreach (int item in Model.Answer)
+    {
+
+        @item<br />
+    }
+   
+
+
+<br />
+
+}
+
+<p>@Model.Error</p>
+
