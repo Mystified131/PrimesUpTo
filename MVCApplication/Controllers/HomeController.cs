@@ -40,40 +40,53 @@ namespace MVCApplication.Controllers
 
         {
             if (ModelState.IsValid)
-             
+
 
             {
 
-               resultViewModel.State = true;
-               List<int> Answer = new List<int>();
+                resultViewModel.State = true;
+                List<int> Answer = new List<int>();
 
-                for (int j = 0; j <= resultViewModel.Numin; j++){
+                for (int j = 0; j <= resultViewModel.Numin; j++)
+                {
 
                     bool Ans = true;
 
-                if ((j <= 1) || (j == 2) || (j % 2 == 0))
-                {
-
-                    Ans = false;
-
-                }
-
-                var boundary = (int)Math.Floor(Math.Sqrt(resultViewModel.Numin));
-
-                for (int i = 3; i <= boundary; i += 2)
-                    if (j % i == 0)
+                    if  ((j > 2) && (j % 2 == 0))
                     {
+
+                        Ans = false;
+
+                    }
+
+                    var boundary = (int)Math.Floor(Math.Sqrt(j));
+
+                    for (int i = 3; i <= boundary; i += 2)
+                        if (j % i == 0)
+                        {
                             Ans = false;
-                    }
+                        }
 
-                if(Ans == true)
-                    {
-                       Answer.Add(j);
                     
+
+                    if (Ans == true)
+                    {
+                        Answer.Add(j);
+                        Answer.Remove(1);
+                        Answer.Remove(0);
+                        if (Answer.Count == resultViewModel.Numlim)
+                        {
+                            resultViewModel.Answer = Answer;
+                            return View(resultViewModel);
+
+                        }
+
                     }
 
                 }
 
+                Answer.Remove(1);
+                Answer.Remove(0);
                 resultViewModel.Answer = Answer;
                 return View(resultViewModel);
             }

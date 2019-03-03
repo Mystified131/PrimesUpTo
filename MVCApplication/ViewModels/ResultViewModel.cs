@@ -12,6 +12,8 @@ namespace MVCApplication.ViewModels
     {
         [Required]
         public int Numin { get; set; }
+        [Required]
+        public int Numlim { get; set; }
         public bool State { get; set; }
         public List<int> Answer { get; set; }
         public String Error { get; set; }

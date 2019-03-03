@@ -11,7 +11,7 @@
 
 @if (@Model.State != false)
 
-{ <p>The prime numbers up to @Model.Numin are:</p>
+{ <p>@Model.Numlim prime numbers up to @Model.Numin (if there are that many) are:</p>
     @foreach (int item in Model.Answer)
     {
 
